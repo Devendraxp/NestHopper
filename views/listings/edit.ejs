@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate.ejs') -%>
+<body>
+    <h3>Edit your listing</h3>
+    <br>
+    <div class="col-8 offset-1">
+        <form enctype="multipart/form-data" method="POST" action="/listings/<%=listing._id%>?_method=PUT" class="needs-validation" novalidate>
+            <div>
+                <label class="form-label" for="title">Title</label>
+                <input required class="form-control" type="text" placeholder="Enter Title" name="listing[title]" value="<%=listing.title%>">
+                <div class="valid-feedback">
+                    Title looks good !
+                </div>
+            </div>
+            <br><br>
+            <div>
+                <label class="form-label" for="description">Description</label>
+                <textarea required class="form-control" name="listing[description]" id="description" cols="50" rows="10"><%=listing.description%></textarea>
+                <div class="invalid-feedback">
+                    Description must be in between 1-300
+                </div>
+            </div>
+            <br>
+              Original Image :
+            <br>
+            <br>
+            <div class="col-3" style="height: 30vp;"><img src="<%= originalImg %>" class="card-img-top" alt="Img"></div>
+            <br>
+            <div> <label class="form-label" for="imageUrl">Upload New Listing Image</label>
+             <input  class="form-control" type="file" name="listing[image]">
+             </div>
+            <br><br>
+            <div>
+                <label class="form-label" for="price">Price</label>
+                <input required class="form-control" value="<%=listing.price%>" type="number" placeholder="Enter Price" name="listing[price]">
+                <div class="invalid-feedback">
+                    Enter a valid price
+                </div>
+            </div>
+            <br><br>
+            <div>
+                <label class="form-label" for="location">Location</label>
+                <input required class="form-control" value="<%=listing.location%>" type="text" placeholder="Enter location" name="listing[location]">
+                <div class="invalid-feedback">
+                    Enter a valid location
+                </div>
+            </div>
+            <br><br>
+            <div>
+                <label class="form-label" for="country">Country</label>
+                <input required class="form-control" value="<%=listing.country%>" type="text" placeholder="Enter country" name="listing[country]">
+                <div class="invalid-feedback">
+                    Enter a valid country
+                </div>
+            </div>
+            <br><br>
+            <button class="btn btn-dark">Edit</button>
+        </form>
+        <br>
+    </div>
+</body>
