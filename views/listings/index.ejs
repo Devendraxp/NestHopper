@@ -21,8 +21,13 @@
         border-radius: 0.5rem;
         width: 24rem;
       }
+      @media (max-width: 620px) {
+    .all-filters {
+        display: none !important;
+    }
+}
     </style>
-    <div id="filters" class="d-flex flex-row mt-2 ps-4 pe-3">
+    <div id="filters" class="d-flex align-item-center flex-row mt-2 ps-4 pe-3">
         <div class="all-filters container-fluid d-flex flex-row">
           <div class="filters">
           <div class="filter d-flex justify-content-center"><i class="fa-solid fa-fire"></i></div> 

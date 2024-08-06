@@ -112,3 +112,24 @@ body {
     width: 80vb;
     border-radius: 8px;
 }
+
+@media (max-width: 620px){
+    .search-box{
+        width: 22rem !important;
+        padding: 0.5rem 1rem 0.5rem 1rem !important;
+    }
+    .review-body{
+        width: 300px !important;
+    }
+
+    #map {
+        height: 200px;
+        width: 300px;
+        border-radius: 8px;
+        margin-left: auto !important;
+    }
+    .listing-show-img{
+        height: 200px !important;
+        width: 300px !important;
+    }
+}
