@@ -1,25 +1,35 @@
+require('dotenv').config(); // Load environment variables
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
+const dbUrl = process.env.ATLASDB_LINK;
 
-main()
-  .then(() => {
+const main = async () => {
+  try {
+    console.log("Database URL:", dbUrl); // Log the DB URL for debugging
+    await mongoose.connect(dbUrl);
     console.log("Connected to Database Successfully");
-  })
-  .catch((err) => console.log(err));
-
-async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/NestHopper");
-}
-
-const initDb = async () => {
-  await Listing.deleteMany({});
-  initData.data = initData.data.map((obj) => ({
-    ...obj,
-    owner: "66a47bb11594ecbe12613a50",
-  }));
-  await Listing.insertMany(initData.data);
-  console.log("Data was saved");
+    await initDb();
+  } catch (err) {
+    console.error("Database connection error:", err);
+  } finally {
+    mongoose.connection.close();
+  }
 };
 
-initDb();
+const initDb = async () => {
+  try {
+    await Listing.deleteMany({});
+    initData.data = initData.data.map((obj) => ({
+      ...obj,
+      owner: "66b227264023ff10f16aa5d0",
+      geometry:{type:"Point", coordinates: [79.0821, 21.1498]},
+    }));
+    await Listing.insertMany(initData.data);
+    console.log("Data was saved");
+  } catch (error) {
+    console.error("Error initializing the database:", error);
+  }
+};
+
+main();

@@ -1,34 +1,8 @@
 <% layout('layouts/boilerplate.ejs') -%>
 <body>
     <br>
-    <style>
-      .filters{
-        opacity: 0.7;
-      }
-      .filters:hover{
-        opacity: 1;
-        cursor: pointer;
-      }
-      .all-filters{
-        overflow: hidden;
-      }
-      .taxInfo{
-        display: none;
-      }
-      .tax-toggle{
-        border: 0.1rem solid rgb(40, 40, 40);
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        width: 24rem;
-      }
-      @media (max-width: 620px) {
-    .all-filters {
-        display: none !important;
-    }
-}
-    </style>
     <div id="filters" class="d-flex align-item-center flex-row mt-2 ps-4 pe-3">
-        <div class="all-filters container-fluid d-flex flex-row">
+        <div id="all-filters" class="all-filters container-fluid d-flex flex-row">
           <div class="filters">
           <div class="filter d-flex justify-content-center"><i class="fa-solid fa-fire"></i></div> 
           <p>Trending</p> 
